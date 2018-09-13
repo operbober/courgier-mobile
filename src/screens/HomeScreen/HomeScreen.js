@@ -1,25 +1,30 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {NavigationActions} from 'react-navigation'
 import {Button, Text, View} from 'native-base';
+import {Container} from '../Container'
 import {Logo} from '../../components/Logo/Logo';
 
 
-export class HomeScreen extends Component {
+class HomeScreenComponent extends Component {
     render() {
         return (
-            <View style={styles.content}>
-                <Logo/>
-                <Button block
-                        style={styles.signInButton}
-                        onPress={() => this.props.navigation.navigate('SignIn')}>
-                    <Text>Sign in to your account</Text>
-                </Button>
-                <Text>or</Text>
-                <Button transparent
-                        style={styles.signUpButton}
-                        onPress={() => this.props.navigation.navigate('SignUp')}>
-                    <Text>Sign Up</Text>
-                </Button>
-            </View>
+            <Container>
+                <View style={styles.content}>
+                    <Logo/>
+                    <Button block
+                            style={styles.signInButton}
+                            onPress={() => this.props.navigate('SignIn')}>
+                        <Text>Sign in to your account</Text>
+                    </Button>
+                    <Text>or</Text>
+                    <Button transparent
+                            style={styles.signUpButton}
+                            onPress={() => this.props.navigate('SignUp')}>
+                        <Text>Sign Up</Text>
+                    </Button>
+                </View>
+            </Container>
         );
     }
 }
@@ -40,3 +45,10 @@ const styles = {
         alignItems: 'center'
     }
 };
+
+export const HomeScreen = connect(
+    null,
+    dispatch => ({
+        navigate: (route) => dispatch(NavigationActions.navigate({routeName: route}))
+    })
+)(HomeScreenComponent);
