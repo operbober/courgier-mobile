@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {connect}from 'react-redux';
-import {NavigationActions} from 'react-navigation';
-
+import {connect} from 'react-redux';
 import {Button, Form, Input, Item, Label, Text,} from 'native-base';
 import {Container} from '../Container';
+import {setParams} from '../../redux/actions/NavActions';
 
 
 export class SignInScreenComponent extends Component {
@@ -15,8 +14,7 @@ export class SignInScreenComponent extends Component {
 
 
     componentDidMount() {
-        console.log(this.props.route);
-        this.props.setScreenParams(this.props.route.key)
+        this.props.setParams({title: 'Sign In'})
     }
 
 
@@ -42,16 +40,6 @@ export class SignInScreenComponent extends Component {
 }
 
 export const SignInScreen = connect(
-    (state) => ({
-        route: state.nav.routes[state.nav.index]
-    }),
-    dispatch => ({
-        setScreenParams: (key) => dispatch(NavigationActions.setParams({
-            params: {
-                title: 'Sign In',
-                showBackButton: true
-            },
-            key: key
-        }))
-    })
+    null,
+    {setParams}
 )(SignInScreenComponent);

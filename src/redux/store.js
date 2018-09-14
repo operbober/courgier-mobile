@@ -9,6 +9,9 @@ import {
     createNavigationReducer,
 } from 'react-navigation-redux-helpers';
 
+import thunkMiddleware from 'redux-thunk';
+
+
 export const configureStore = (RootNavigator) => {
 
     const navReducer = createNavigationReducer(RootNavigator);
@@ -21,7 +24,7 @@ export const configureStore = (RootNavigator) => {
 
     return createStore(
         rootReducer,
-        applyMiddleware(reactNavigationReduxMiddleware)
+        applyMiddleware(thunkMiddleware, reactNavigationReduxMiddleware)
     )
 
 };

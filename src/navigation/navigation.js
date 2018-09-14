@@ -1,8 +1,8 @@
 import {createStackNavigator} from 'react-navigation';
 
-import {HomeScreen} from './screens/HomeScreen/HomeScreen';
-import {SignInScreen} from './screens/SignInScreen/SignInScreen';
-import {SignUpScreen} from './screens/SignUpScreen/SignUpScreen';
+import {HomeScreen} from '../screens/HomeScreen/HomeScreen';
+import {SignInScreen} from '../screens/SignInScreen/SignInScreen';
+import {SignUpScreen} from '../screens/SignUpScreen/SignUpScreen';
 
 export const RootNavigator = createStackNavigator(
     {

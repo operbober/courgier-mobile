@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect, Provider} from 'react-redux';
 import {reduxifyNavigator} from 'react-navigation-redux-helpers';
-import {RootNavigator} from './navigation';
+import {RootNavigator} from './navigation/navigation';
 import {configureStore} from './redux/store';
 
 const store = configureStore(RootNavigator);
