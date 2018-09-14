@@ -4,12 +4,14 @@ import {
     combineReducers,
 } from 'redux';
 
+import thunkMiddleware from 'redux-thunk';
+
 import {
     createReactNavigationReduxMiddleware,
     createNavigationReducer,
 } from 'react-navigation-redux-helpers';
 
-import thunkMiddleware from 'redux-thunk';
+import {reducer as formReducer} from 'redux-form';
 
 
 export const configureStore = (RootNavigator) => {
@@ -17,7 +19,8 @@ export const configureStore = (RootNavigator) => {
     const navReducer = createNavigationReducer(RootNavigator);
 
     const rootReducer = combineReducers({
-        nav: navReducer
+        nav: navReducer,
+        form: formReducer
     });
 
     const reactNavigationReduxMiddleware = createReactNavigationReduxMiddleware('root', state => state.nav);
