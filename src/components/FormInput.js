@@ -1,5 +1,5 @@
-import React from 'react'
 import {Icon, Input, Item, Label} from 'native-base';
+import React from 'react'
 
 
 export const renderInput = (inputProps) => ({input, label, type, meta: {touched, error}}) => {

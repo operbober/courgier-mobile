@@ -21,6 +21,7 @@
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
     "expo": "^27.0.1",
+    "firebase": "^5.5.0",
     "native-base": "^2.8.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
@@ -30,6 +31,8 @@
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-form-validators": "^2.7.2",
-    "redux-thunk": "^2.3.0"
+    "redux-observable": "^1.0.0",
+    "redux-thunk": "^2.3.0",
+    "rxjs": "^6.3.2"
   }
 }

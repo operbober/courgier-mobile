@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {NavigationActions} from 'react-navigation'
 import {Button, Text, View} from 'native-base';
-import {Container} from '../Container'
+import React, {Component} from 'react';
+import {NavigationActions} from 'react-navigation'
+import {connect} from 'react-redux';
 import {Logo} from '../../components/Logo/Logo';
+import {Container} from '../Container'
 
 
 class HomeScreenComponent extends Component {

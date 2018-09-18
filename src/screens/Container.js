@@ -1,21 +1,21 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {StatusBar, BackHandler} from 'react-native';
 import {Body, Button, Container as NbContainer, Header, Icon, Title} from 'native-base';
+import React from 'react';
+import {BackHandler, StatusBar} from 'react-native';
+import {connect} from 'react-redux';
 import {goBack} from '../redux/actions/NavActions';
 
 class ContainerComponent extends React.Component {
 
     componentDidMount() {
-        BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+        BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     }
 
     componentWillUnmount() {
-        BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+        BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
     }
 
     onBackPress = () => {
-        const { nav } = this.props;
+        const {nav} = this.props;
         if (nav.index === 0) {
             return false;
         }
@@ -32,9 +32,9 @@ class ContainerComponent extends React.Component {
                 <Header transparent>
                     <Body style={styles.headerBody}>
                     {nav.index > 0 &&
-                        <Button transparent style={styles.backButton} onPress={this.props.goBack}>
-                            <Icon style={styles.backButtonIcon} name="arrow-back"/>
-                        </Button>
+                    <Button transparent style={styles.backButton} onPress={this.props.goBack}>
+                        <Icon style={styles.backButtonIcon} name="arrow-back"/>
+                    </Button>
                     }
                     <Title style={styles.title}>{title || ''}</Title>
                     </Body>

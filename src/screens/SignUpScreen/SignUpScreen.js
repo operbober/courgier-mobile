@@ -1,8 +1,8 @@
+import {Button, Form, Input, Item, Label, Text} from 'native-base';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Button, Form, Input, Item, Label, Text} from 'native-base';
-import {Container} from '../Container';
 import {setParams} from '../../redux/actions/NavActions';
+import {Container} from '../Container';
 
 export class SignUpScreenComponent extends Component {
 

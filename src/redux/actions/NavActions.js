@@ -1,6 +1,6 @@
 import {NavigationActions} from 'react-navigation';
 
-export const goBack = () =>  NavigationActions.back();
+export const goBack = () => NavigationActions.back();
 
 export const setParams = (params) => (dispatch, getState) => {
     const nav = getState().nav;
