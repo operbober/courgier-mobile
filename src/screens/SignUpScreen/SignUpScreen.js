@@ -1,19 +1,13 @@
 import {Button, Form, Input, Item, Label, Text} from 'native-base';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setParams} from '../../redux/actions/NavActions';
 import {Container} from '../Container';
 
 export class SignUpScreenComponent extends Component {
 
-
-    componentDidMount() {
-        this.props.setParams({title: 'Sign Up'})
-    }
-
     render() {
         return (
-            <Container title={'Sign Up'} showBackButton>
+            <Container title={'Sign Up'} back={true}>
                 <Form>
                     <Item floatingLabel>
                         <Label>Email</Label>
@@ -36,4 +30,4 @@ export class SignUpScreenComponent extends Component {
     }
 }
 
-export const SignUpScreen = connect(null, {setParams})(SignUpScreenComponent);
+export const SignUpScreen = connect()(SignUpScreenComponent);

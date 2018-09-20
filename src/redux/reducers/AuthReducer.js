@@ -1,23 +1,29 @@
-import {SIGN_IN_FAILURE, SIGN_IN_REQUEST, SIGN_IN_SUCCESS} from '../actions/AuthActions';
+import {
+    AUTH_STATE_CHANGE,
+    SIGN_IN_FAILURE,
+    SIGN_IN_REQUEST,
+    SIGN_IN_SUCCESS, SIGN_OUT,
+    SUBSCRIBE_ON_AUTH_STATE_CHANGE
+} from '../actions/AuthActions';
 
-export const authReducer = (state = {
+const defaultState = {
     loading: false,
     user: null
-}, action) => {
+};
+
+export const authReducer = (state = defaultState, action) => {
     switch (action.type) {
 
         case SIGN_IN_REQUEST:
             return {
                 loading: true,
-                user: null,
-                error: null
+                user: null
             };
 
         case SIGN_IN_SUCCESS:
             return {
                 loading: false,
-                user: action.payload,
-                error: null
+                user: action.payload
             };
 
         case SIGN_IN_FAILURE:
@@ -25,6 +31,25 @@ export const authReducer = (state = {
                 loading: false,
                 user: null
             };
+
+        case SUBSCRIBE_ON_AUTH_STATE_CHANGE: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+
+        case AUTH_STATE_CHANGE: {
+            return {
+                ...state,
+                loading: false,
+                user: action.payload
+            }
+        }
+
+        case SIGN_OUT: {
+            return defaultState;
+        }
 
         default:
             return state;

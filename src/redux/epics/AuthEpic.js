@@ -1,21 +1,36 @@
+import {Alert} from 'react-native';
 import {formValueSelector, reset} from 'redux-form';
 import {combineEpics, ofType} from 'redux-observable';
 import {of} from 'rxjs';
-import {catchError, map, switchMap} from 'rxjs/operators';
-import {SIGN_IN_REQUEST, signInFailure, signInSuccess} from '../actions/AuthActions';
-import {Alert} from 'react-native';
+import {catchError, first, map, switchMap} from 'rxjs/operators';
+import {
+    authStateChange,
+    navigate,
+    SIGN_IN_REQUEST,
+    SIGN_OUT,
+    signInFailure,
+    signInSuccess,
+    SUBSCRIBE_ON_AUTH_STATE_CHANGE
+} from '../actions';
 
-
-const signInFormSelector = formValueSelector('signIn');
+const authStateChangeEpic = (action$, store$, {authApi}) => action$.pipe(
+    ofType(SUBSCRIBE_ON_AUTH_STATE_CHANGE),
+    switchMap(() => authApi.subscribeOnAuthStateChange().pipe(
+        first(),
+        switchMap(user => {
+            return of(authStateChange(user), navigate(user ? 'Main' : 'Auth'))
+        }),
+    ))
+);
 
 const signInEpic = (action$, store$, {authApi}) => action$.pipe(
     ofType(SIGN_IN_REQUEST),
     switchMap(() => {
             const state = store$.value;
-            const {email, password} = signInFormSelector(state, 'email', 'password');
+            const {email, password} = formValueSelector('signIn')(state, 'email', 'password');
             return authApi.signIn(email, password).pipe(
-                map(({user}) => {
-                    return signInSuccess(user);
+                switchMap(({user}) => {
+                    return of(signInSuccess(user), navigate('Main'));
                 }),
                 catchError(err => {
                     console.log(err);
@@ -30,4 +45,11 @@ const signInEpic = (action$, store$, {authApi}) => action$.pipe(
     )
 );
 
-export const authEpic = combineEpics(signInEpic);
+const signOutEpic = (action$, store$, {authApi}) => action$.pipe(
+    ofType(SIGN_OUT),
+    switchMap(() => authApi.signOut().pipe(
+        map(() => navigate('Auth'))
+    ))
+);
+
+export const authEpic = combineEpics(authStateChangeEpic, signInEpic, signOutEpic);

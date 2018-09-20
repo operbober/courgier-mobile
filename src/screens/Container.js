@@ -15,8 +15,8 @@ class ContainerComponent extends React.Component {
     }
 
     onBackPress = () => {
-        const {nav} = this.props;
-        if (nav.index === 0) {
+        const {back} = this.props;
+        if (!back) {
             return false;
         }
         this.props.goBack();
@@ -24,17 +24,17 @@ class ContainerComponent extends React.Component {
     };
 
     render() {
-        const {title, nav} = this.props;
+        const {title, back} = this.props;
 
         return (
             <NbContainer style={styles.container}>
                 <StatusBar hidden={true}/>
                 <Header transparent>
                     <Body style={styles.headerBody}>
-                    {nav.index > 0 &&
-                    <Button transparent style={styles.backButton} onPress={this.props.goBack}>
-                        <Icon style={styles.backButtonIcon} name="arrow-back"/>
-                    </Button>
+                    {back &&
+                        <Button transparent style={styles.backButton} onPress={this.props.goBack}>
+                            <Icon style={styles.backButtonIcon} name="arrow-back"/>
+                        </Button>
                     }
                     <Title style={styles.title}>{title || ''}</Title>
                     </Body>
@@ -47,7 +47,7 @@ class ContainerComponent extends React.Component {
 
 const styles = {
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: '#fff'
     },
     headerBody: {
         flex: 1,
@@ -70,10 +70,9 @@ const styles = {
 
 export const Container = connect(
     (state) => {
-        let params = state.nav.routes[state.nav.index].params;
+        // let params = state.nav.routes[state.nav.index].params;
         return {
-            nav: state.nav,
-            title: params && params.title
+            nav: state.nav
         }
     },
     {goBack}

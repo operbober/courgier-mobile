@@ -1,8 +1,8 @@
 import {Button, Text, View} from 'native-base';
 import React, {Component} from 'react';
-import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux';
 import {Logo} from '../../components/Logo/Logo';
+import {navigate} from '../../redux/actions';
 import {Container} from '../Container'
 
 
@@ -46,9 +46,4 @@ const styles = {
     }
 };
 
-export const HomeScreen = connect(
-    null,
-    dispatch => ({
-        navigate: (route) => dispatch(NavigationActions.navigate({routeName: route}))
-    })
-)(HomeScreenComponent);
+export const HomeScreen = connect(null, {navigate})(HomeScreenComponent);
