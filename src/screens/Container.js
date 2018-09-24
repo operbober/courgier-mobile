@@ -31,7 +31,7 @@ class ContainerComponent extends React.Component {
                 <StatusBar hidden={true}/>
                 <Header transparent>
                     <Body style={styles.headerBody}>
-                    {back &&
+                    {(title || back) &&
                         <Button transparent style={styles.backButton} onPress={this.props.goBack}>
                             <Icon style={styles.backButtonIcon} name="arrow-back"/>
                         </Button>
