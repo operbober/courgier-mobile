@@ -1,4 +1,5 @@
 import React from 'react';
+import SplashScreen from 'react-native-splash-screen'
 import {reduxifyNavigator} from 'react-navigation-redux-helpers';
 import {connect, Provider} from 'react-redux';
 import {RootNavigator} from './navigation/navigation';
@@ -8,6 +9,12 @@ const store = configureStore(RootNavigator);
 const AppNavigator = connect((state) => ({state: state.nav}))(reduxifyNavigator(RootNavigator, 'root'));
 
 export default class App extends React.Component {
+
+
+    componentDidMount() {
+        SplashScreen.hide();
+    }
+
 
     render() {
 
