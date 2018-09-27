@@ -94,13 +94,13 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "27.0.3"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "com.courgiermobile"
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
         ndk {
@@ -139,7 +139,7 @@ android {
 dependencies {
     implementation project(':react-native-splash-screen')
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.android.support:appcompat-v7:28.0.0"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 }
 
