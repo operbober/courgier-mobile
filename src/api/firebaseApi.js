@@ -3,19 +3,16 @@ import 'firebase/auth'
 import {from, Observable} from 'rxjs';
 
 const config = {
-    apiKey: 'AIzaSyC1CTWI6z_W4bNa2kFTOWr7dDr4Z9005J8',
-    authDomain: 'reactnativeexpoexample.firebaseapp.com',
-    databaseURL: 'https://reactnativeexpoexample.firebaseio.com',
-    projectId: 'reactnativeexpoexample',
-    storageBucket: 'reactnativeexpoexample.appspot.com',
-    messagingSenderId: '840295461962'
+    apiKey: "AIzaSyBcC9dPNeUxFz_Ny50EsNxB2aderU2pXTY",
+    authDomain: "courgier.firebaseapp.com",
+    databaseURL: "https://courgier.firebaseio.com",
+    projectId: "courgier",
+    messagingSenderId: "266937184578"
 };
 
+firebase.initializeApp(config);
 
 export const firebaseApi = {
-    initializeApp: () => {
-        firebase.initializeApp(config);
-    },
     signIn: (username, password) => {
         return from(firebase.auth().signInWithEmailAndPassword(username, password))
     },

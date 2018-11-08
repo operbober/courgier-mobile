@@ -1,32 +1,19 @@
-import {createNavigationReducer, createReactNavigationReduxMiddleware,} from 'react-navigation-redux-helpers';
-import {applyMiddleware, combineReducers, createStore,} from 'redux';
-import {reducer as formReducer} from 'redux-form';
-import {combineEpics, createEpicMiddleware} from 'redux-observable';
+import {createReactNavigationReduxMiddleware,} from 'react-navigation-redux-helpers';
+import {applyMiddleware, createStore,} from 'redux';
+import {createEpicMiddleware} from 'redux-observable';
 import thunkMiddleware from 'redux-thunk';
 import {firebaseApi} from '../api/firebaseApi';
-import {subscribeOnAuthStateChange} from './actions/AuthActions';
-import {authEpic} from './epics/AuthEpic';
-import {authReducer} from './reducers';
+import {rootEpic} from './epics';
+import {rootReducer} from './reducers';
 
 
-export const configureStore = (RootNavigator) => {
-
-    const navReducer = createNavigationReducer(RootNavigator);
-
-    const rootReducer = combineReducers({
-        nav: navReducer,
-        form: formReducer,
-        auth: authReducer
-    });
-
-    const rootEpic = combineEpics(
-        authEpic
-    );
+export const configureStore = () => {
 
     const reactNavigationReduxMiddleware = createReactNavigationReduxMiddleware(
         'root',
         state => state.nav
     );
+
     const epicMiddleware = createEpicMiddleware({
         dependencies: {
             authApi: firebaseApi
@@ -39,9 +26,6 @@ export const configureStore = (RootNavigator) => {
     );
 
     epicMiddleware.run(rootEpic);
-
-    firebaseApi.initializeApp();
-    store.dispatch(subscribeOnAuthStateChange());
 
     return store;
 };

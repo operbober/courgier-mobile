@@ -1262,6 +1262,10 @@ babel-plugin-transform-function-bind@^6.5.2:
     babel-plugin-syntax-function-bind "^6.8.0"
     babel-runtime "^6.22.0"
 
+babel-plugin-transform-inline-environment-variables@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-inline-environment-variables/-/babel-plugin-transform-inline-environment-variables-0.4.3.tgz#a3b09883353be8b5e2336e3ff1ef8a5d93f9c489"
+
 babel-plugin-transform-object-assign@^6.5.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-assign/-/babel-plugin-transform-object-assign-6.22.0.tgz#f99d2f66f1a0b0d498e346c5359684740caa20ba"
@@ -3984,6 +3988,10 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+
 morgan@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
@@ -4643,6 +4651,10 @@ react-native-background-geolocation@^2.13.3:
     plist "^2.0.1"
     react-native-background-fetch "~2.4.3"
     xcode "^0.9.1"
+
+react-native-device-info@^0.22.6:
+  version "0.22.6"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.22.6.tgz#32a674b0484d31214fdcfbbb0e677621e83ba69d"
 
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"

@@ -1,0 +1,34 @@
+# Default ignored files
+/.idea/shelf/
+/.idea/workspace.xml
+
+# Project exclude paths
+/.gradle/
+/app/build/intermediates/assets/
+/app/build/intermediates/blame/
+/app/build/intermediates/check-manifest/
+/app/build/intermediates/classes/
+/app/build/intermediates/classes/debug/
+/app/build/intermediates/incremental/
+/app/build/intermediates/javaPrecompile/
+/app/build/intermediates/jniLibs/
+/app/build/intermediates/lint/
+/app/build/intermediates/manifests/
+/app/build/intermediates/prebuild/
+/app/build/intermediates/res/
+/app/build/intermediates/rs/
+/app/build/intermediates/shaders/
+/app/build/intermediates/splits-support/
+/app/build/intermediates/symbols/
+/app/build/intermediates/transforms/
+/app/build/outputs/
+/app/build/tmp/
+
+# Datasource local storage ignored files
+/.idea/dataSources/
+dataSources.local.xml
+
+# Editor-based HTTP Client requests
+/.idea/httpRequests/
+rest-client.private.env.json
+http-client.private.env.json

@@ -29,16 +29,18 @@ class ContainerComponent extends React.Component {
         return (
             <NbContainer style={styles.container}>
                 <StatusBar hidden={true}/>
-                <Header transparent>
-                    <Body style={styles.headerBody}>
-                    {(title || back) &&
+                {(title || back) &&
+                    <Header transparent>
+                        <Body style={styles.headerBody}>
+                        {back &&
                         <Button transparent style={styles.backButton} onPress={this.props.goBack}>
                             <Icon style={styles.backButtonIcon} name="arrow-back"/>
                         </Button>
-                    }
-                    <Title style={styles.title}>{title || ''}</Title>
-                    </Body>
-                </Header>
+                        }
+                        <Title style={styles.title}>{title || ''}</Title>
+                        </Body>
+                    </Header>
+                }
                 {this.props.children}
             </NbContainer>
         );
